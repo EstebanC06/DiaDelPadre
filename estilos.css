@@ -1,0 +1,151 @@
+:root {
+  --stone-dark: #1a1410;
+  --stone: #2a2018;
+  --torch: #ff8a2a;
+  --gold: #e9c46a;
+  --blood: #a52a2a;
+  --parchment: #f4e4c1;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  background: radial-gradient(
+    ellipse at 50% 20%,
+    #2b333d 0%,
+    #0c1015 70%,
+    #05070a 100%
+  );
+  color: var(--parchment);
+  font-family: "Cinzel", serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 18px;
+  overflow: hidden;
+}
+.frame {
+  position: relative;
+  width: min(960px, 100%);
+}
+h1.title {
+  font-family: "Cinzel Decorative", serif;
+  font-weight: 900;
+  text-align: center;
+  font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+  letter-spacing: 0.08em;
+  background: linear-gradient(180deg, #f6e6b8, #c79a3c 60%, #8a5a1e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 0 rgba(0, 0, 0, 0.6));
+  margin-bottom: 10px;
+}
+.stage {
+  position: relative;
+  border: 6px solid #46525e;
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px #0c1015,
+    0 18px 50px rgba(0, 0, 0, 0.7),
+    inset 0 0 60px rgba(0, 0, 0, 0.6);
+  background: #000;
+  overflow: hidden;
+  aspect-ratio: 960/470;
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: auto;
+}
+.hint {
+  text-align: center;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: #b9a987;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+}
+.hint b {
+  color: var(--gold);
+  font-weight: 600;
+}
+.key {
+  display: inline-block;
+  border: 1px solid #5a4a30;
+  border-bottom-width: 3px;
+  border-radius: 5px;
+  padding: 1px 7px;
+  margin: 0 1px;
+  background: #241a10;
+  color: #f0dcae;
+  font-family: "MedievalSharp", serif;
+  font-size: 0.8rem;
+}
+/* ---- Controles táctiles ---- */
+#touch {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 14px 16px;
+}
+#touch .pad {
+  display: flex;
+  gap: 12px;
+  pointer-events: auto;
+}
+#touch button {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: none;
+  user-select: none;
+  width: 62px;
+  height: 62px;
+  border-radius: 14px;
+  border: 2px solid rgba(180, 200, 220, 0.35);
+  background: rgba(20, 28, 38, 0.5);
+  color: #e7eef5;
+  font-size: 26px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+  transition:
+    transform 0.05s,
+    background 0.1s;
+}
+#touch button.attack {
+  width: 74px;
+  height: 74px;
+  border-color: rgba(216, 175, 70, 0.6);
+  background: rgba(120, 40, 40, 0.55);
+  color: #ffe6a6;
+  font-size: 30px;
+}
+#touch button.on {
+  background: rgba(216, 175, 70, 0.75);
+  color: #1a1208;
+  transform: scale(0.94);
+}
+/* en pantallas con ratón fino, atenúa los botones (igual sirven con clic) */
+@media (pointer: fine) {
+  #touch {
+    opacity: 0.35;
+  }
+  #touch:hover {
+    opacity: 0.85;
+  }
+}
