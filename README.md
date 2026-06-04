@@ -56,11 +56,21 @@ Luego entra a `http://localhost:8000`.
 
 ```
 dia-del-padre/
-├── index.html     # Estructura: canvas, botones táctiles y barra de ayuda
-├── estilos.css    # Estilos: paleta, marco del escenario y controles táctiles
-├── juego.js       # Lógica: fondo, personajes, controles, combate y mensaje
-└── README.md      # Este archivo
+├── index.html                      # Estructura: canvas, botones táctiles y barra de ayuda
+├── estilos.css                     # Estilos: paleta, marco del escenario y controles táctiles
+├── juego.js                        # Lógica: fondo, personajes, controles, combate y mensaje
+├── README.md                       # Este archivo
+│
+├── favicon.svg                     # Icono vectorial (navegadores modernos)
+├── favicon-96x96.png               # Icono PNG de respaldo
+├── favicon.ico                     # Icono clásico (navegadores antiguos)
+├── apple-touch-icon.png            # Icono para "añadir a inicio" en iOS
+├── site.webmanifest                # Manifiesto para Android / PWA
+├── web-app-manifest-192x192.png    # Icono del manifiesto (192px)
+└── web-app-manifest-512x512.png    # Icono del manifiesto (512px)
 ```
+
+> Todos los archivos deben permanecer en la misma carpeta. Las rutas del favicon y del manifiesto son **relativas**, pensadas para abrir el proyecto localmente o desde una subcarpeta. Si lo publicas en la **raíz** de un dominio, puedes cambiarlas a rutas absolutas (con `/` inicial).
 
 ---
 
