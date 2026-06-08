@@ -1,4 +1,3 @@
-/* VARIABLES */
 :root {
   --stone-dark: #1a1410;
   --stone: #2a2018;
@@ -39,9 +38,15 @@ body {
   overflow: hidden;
 }
 
+/* FRAME — se dimensiona por ancho Y por alto del viewport
+   min() elige el valor más pequeño entre:
+     · 100dvw - 32px  (limitado por ancho)
+     · (100dvh - 130px) × (960/470)  (limitado por alto; 130px = título + hint + padding)
+   Esto hace que en pantallas grandes el canvas crezca pero nunca
+   desborde verticalmente; y en celular no supere el ancho. */
 .frame {
   position: relative;
-  width: min(calc(100dvw - 32px), calc((100dvh - 130px) * 2.04));
+  width: min(calc(100dvw - 32px), calc((100dvh - 130px) * 2.04), 1400px);
 }
 
 /* TÍTULO */
@@ -59,13 +64,13 @@ h1.title {
   margin-bottom: 8px;
 }
 
-/* STAGE-WRAP — contenedor relativo para el canvas y los botones  */
+/* STAGE-WRAP — contenedor relativo para el canvas y los botones */
 .stage-wrap {
   position: relative; /* ancla #touch en modo overlay (desktop) */
   line-height: 0; /* elimina espacio fantasma bajo el canvas */
 }
 
-/* STAGE — el canvas con borde y relación de aspecto */
+/* STAGE — el canvas con borde y relación de aspect */
 .stage {
   border: 5px solid var(--stage-border);
   border-radius: 8px;
@@ -189,7 +194,7 @@ canvas {
 }
 
 /* RESPONSIVE MÓVIL PORTRAIT  (≤ 640 px de ancho)
-   Los botones salen del canvas y aparecen DEBAJO de él. */
+   Los botones salen del canvas y aparecen DEBAJO de él.*/
 @media (max-width: 640px) {
   body {
     justify-content: flex-start;
