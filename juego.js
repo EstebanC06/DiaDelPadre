@@ -7,16 +7,15 @@ const W = canvas.width,
 const FATHERS_DAY = {
   titulo: "¡Feliz Día del Padre!",
   lineas: [
-    "Podrán pasar los años y cambiar los escenarios,",
-    "pero hay algo que el tiempo jamás podrá borrar:",
+    "Cruzaste cada trampa, venciste cada miedo...",
+    "igual que lo haces por mí todos los días.",
     "",
-    "El valor de tus consejos, la fuerza de tu apoyo",
-    "y el gran orgullo que siento al decir",
-    "que sigo los pasos del mejor hombre del mundo.",
+    "Gracias por ser mi héroe, mi guía",
+    "y mi ejemplo más grande.",
     "",
-    "Te quiero con todo el corazón, papá. ❤",
+    "Te quiero, papá. ❤",
   ],
-  firma: "— De quien siempre te lleva como guía",
+  firma: "— De parte de quien siempre te admira",
 };
 // --------------------------------------------------------------------------
 
@@ -82,7 +81,20 @@ function tapStage() {
   canvas.focus();
 }
 canvas.addEventListener("click", tapStage);
-window.addEventListener("load", () => canvas.focus());
+// Ajusta el buffer del canvas al tamaño CSS real × devicePixelRatio
+// para que el dibujo sea nítido a cualquier escala, incluyendo pantallas Retina.
+function resizeCanvas() {
+  const r = canvas.getBoundingClientRect();
+  if (!r.width) return; // todavía sin layout
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.round(r.width * dpr);
+  canvas.height = Math.round(r.height * dpr);
+}
+window.addEventListener("resize", resizeCanvas);
+window.addEventListener("load", () => {
+  resizeCanvas();
+  canvas.focus();
+});
 
 // Botones táctiles en pantalla
 function wireTouch() {
@@ -402,6 +414,9 @@ function updateParticles(dt) {
 // =========================================================================
 function render() {
   ctx.save();
+  // Escala coordenadas del juego (960×470) al buffer real del canvas.
+  // Garantiza nitidez a cualquier tamaño de pantalla y en Retina/HiDPI.
+  ctx.scale(canvas.width / W, canvas.height / H);
   if (shake > 0.4) {
     ctx.translate((Math.random() - 0.5) * shake, (Math.random() - 0.5) * shake);
   }
