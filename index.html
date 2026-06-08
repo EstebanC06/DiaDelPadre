@@ -24,8 +24,10 @@
   <body>
     <div class="frame">
       <h1 class="title">El Palacio del Tiempo</h1>
-      <div class="stage">
-        <canvas id="game" width="960" height="470" tabindex="0"></canvas>
+      <div class="stage-wrap">
+        <div class="stage">
+          <canvas id="game" width="960" height="470" tabindex="0"></canvas>
+        </div>
         <div id="touch">
           <div class="pad left">
             <button data-act="left" aria-label="Izquierda">
@@ -49,12 +51,19 @@
         </div>
       </div>
       <p class="hint">
-        <span class="key">A</span><span class="key">D</span> Moverse
-        &nbsp;·&nbsp; <span class="key">W</span> Saltar &nbsp;·&nbsp;
-        <span class="key">S</span> Agacharse &nbsp;·&nbsp;
-        <span class="key">Shift</span> Golpear
-        <i class="fa-solid fa-khanda" style="color: #d8af46"></i> &nbsp;·&nbsp;
+        <span class="kbd-hint">
+          <span class="key">A</span><span class="key">D</span> Moverse
+          &nbsp;·&nbsp; <span class="key">W</span> Saltar &nbsp;·&nbsp;
+          <span class="key">S</span> Agacharse &nbsp;·&nbsp;
+          <span class="key">Shift</span> Golpear
+          <i class="fa-solid fa-khanda" style="color: #d8af46"></i>
+          &nbsp;·&nbsp;
+        </span>
         en celular usa los <b>botones en pantalla</b>
+      </p>
+      <p class="rotate-hint">
+        <i class="fa-solid fa-rotate"></i>&nbsp; Mejor experiencia rotando el
+        teléfono
       </p>
     </div>
 
